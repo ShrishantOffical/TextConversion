@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Text conversion</title>
+	<style type="text/css">
+		.heading{
+			color: royalblue;
+		}
+		.text{
+			font-size: 20px;
+			font-weight: bolder;
+		}
+
+		
+		textarea{
+			font-family: sans-serif;
+			font-weight: bolder;
+			padding: 20px;
+		}
+
+		button{
+			border: none;
+			background-color: blue;
+			color: white;
+			border-radius: 13px;
+			height: 35px;
+			width: 95px;
+		}
+		
+	</style>
+</head>
+<body>
+
+	<div class="texteditor" align="center">
+		<h1 class="heading">Text Box</h1>
+		<div class="form-container">
+			<form class="textform">
+				<label class="text">Enter your text here</label><br><br>
+				<textarea rows="20" cols="90" autofocus id="usertext" onkeyup="updateTextInfo()"></textarea>
+				<br><br>
+				<button type="button" onclick="transformToUpperCase()">UpperCase</button>
+				<button type="button" onclick="transformToLowerCase()">LowerCase</button>
+				<button type="button" onclick="searchText()">SearchText</button>
+				<button type="button" onclick="changeTextColor()">ChangeColor</button>
+				<button type="button" onclick="changeFontSize()">FontSize</button>
+				<button type="button" onclick="fontStyle()">FontStyle</button>
+				<button type="button" onclick="Normal()">NormalFont</button>
+				<button type="button" onclick="fontVariant()">FontVariant</button>
+
+				<br><br>
+				<h2 id = "op"></h2></h2>
+
+				
+			</form>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+
+
+		function updateTextInfo() {
+			let text = document.getElementById("usertext").value;
+			let words = text.split(" ").length-1;
+			document.getElementById("op").innerHTML = "This text contains " +words+" words and "+ text.length+" characters. ";
+			
+		}
+
+		function transformToUpperCase() {
+			let text = document.getElementById("usertext");
+			text.value = (text.value).toUpperCase();
+		}
+
+
+		function transformToLowerCase() {
+			let text = document.getElementById("usertext");
+			text.value = (text.value).toLowerCase();
+		}
+		
+
+		function searchText() {
+			let text = document.getElementById("usertext").value;
+			let searchText = prompt("Enter a text to search : ");
+
+
+			if(text.includes(searchText))
+			{
+				alert("yes the text "+ searchText + " is present. ")
+			}
+			else
+			{
+				alert("Noo the text "+ searchText + " is not present. ")
+			}
+
+		}
+         
+         function changeTextColor(){
+         			let text = document.getElementById("usertext");
+         			text.style.color = prompt("Enter a color: ")
+
+
+         }
+         function changeFontSize(){
+           let text = document.getElementById("usertext");
+           text.style.fontsize = prompt("Enter the size: ");
+         }
+
+         function fontStyle() {
+         	let text = document.getElementById("usertext");
+         	 text.style.fontStyle = prompt("Enter the style: ");
+         	
+         }
+
+        
+         function Normal() {
+         	let text = document.getElementById("usertext");
+         	 text.style.fontFamily = "Times New Roman";
+         	}
+
+         	function fontVariant() {
+         	let text = document.getElementById("usertext");
+         	text.style.fontVariant = prompt("Enter the style(small-caps or Normal: ");
+         	}
+
+         	
+         
+			</script>
+
+</body>
+</html>
